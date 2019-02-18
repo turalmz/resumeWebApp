@@ -50,14 +50,16 @@
                 <input type="text" class="form-control" name="surname" value="<%=user.getLastname()%>">
             </div>
             <div class="col-4">
-                <lablel for="name" ></lablel>
-
-                <input type="submit" value="Save" class="btn btn-primary">
+                <div ><lablel for="name" ><br></lablel></div>
+                <div>
+                    <input type="submit" value="Save" class="btn btn-primary">
+                </div>
             </div>
         </div>
 
-    </form>
 
+    </form>
+    <br>
     <div>
         <!-- Tab links -->
         <div class="tab">
