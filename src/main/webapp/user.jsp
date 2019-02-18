@@ -20,6 +20,7 @@
     <link href="static/css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="static/js/script.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <title>User Page</title>
 </head>
@@ -74,7 +75,6 @@
                 <div>
                     <textarea class="form-control" name="profile" ><%=user.getProfileDescription()%></textarea>
 
-                    <input type="submit" value="Save" class="btn btn-primary">
                 </div>
             </form>
         </div>
@@ -167,12 +167,45 @@
 
         <div id="Skill" class="tabcontent">
             <h3>Skill</h3>
+            <div >
+                <form>
+                    <div class="col-6">
+                        <lablel for="skill" >Skill</lablel>
+
+                        <select class="form-control" name="skill">
+
+                            <%  for(Skill skill:skillList){ %>
+
+
+                                <option  value="<%=skill.getId()%>"><%=skill.getName()%></option>
+
+
+                               <% }
+                            %>
+
+                        </select>
+                    </div>
+
+                    <div class="col-6">
+
+                        <lablel for="power" >Power:</lablel>
+                        <input type="text" class="form-control" name="power" value="">
+                    </div>
+                    <div class="col-6">
+                        <lablel for="name" ></lablel>
+
+                        <input type="submit" value="Save" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
             <div>
                 <table class="table" >
                     <thead>
                     <tr>
                         <td>Name</td>
                         <td>Power</td>
+                        <td></td>
+
                     </tr>
                     </thead>
                     <%
@@ -182,6 +215,14 @@
                     <tr>
                         <td><%= us.getSkill().getName() %></td>
                         <td><%= us.getPower() %></td>
+                        <td>
+                            <form action="userdetail" method="post" >
+                                <button type="submit" name="action"  class="btn-table btn-danger"  value="delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+
+                        </td>
                     </tr>
                     </thead>
                     <%
@@ -193,6 +234,32 @@
 
         <div id="Emp_History" class="tabcontent">
             <h3>Emp History</h3>
+            <div >
+                <form>
+                    <div class="col-6">
+                        <lablel for="header" >Header:</lablel>
+
+                        <input type="text" class="form-control" name="header" value="">
+                    </div>
+                    <div class="col-6">
+                        <lablel for="description" >Description:</lablel>
+                        <input type="text" class="form-control" name="description" value="">
+                    </div>
+                    <div class="col-6">
+                        <lablel for="begin_date" >Begin Date:</lablel>
+                        <input type="text" class="form-control" name="begin_date" value="">
+                    </div>
+                    <div class="col-6">
+                        <lablel for="end_date" >End Date:</lablel>
+                        <input type="text" class="form-control" name="end_date" value="">
+                    </div>
+                    <div class="col-6">
+                        <lablel for="name" ></lablel>
+
+                        <input type="submit" value="Save" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
             <div>
                 <table class="table" >
                     <thead>
@@ -201,6 +268,7 @@
                         <td>Begin date</td>
                         <td>End date</td>
                         <td>Job description</td>
+                        <td></td>
                     </tr>
                     </thead>
                     <%
@@ -212,6 +280,14 @@
                         <td><%= us.getBeginDate() %></td>
                         <td><%= us.getEndDate() %></td>
                         <td><%= us.getJobDescription() %></td>
+                        <td >
+                            <form action="userdetail" method="post" >
+                                <button type="submit" name="action"  class="btn-table btn-danger"  value="delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+
+                        </td>
                     </tr>
                     </thead>
                     <%
