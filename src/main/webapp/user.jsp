@@ -11,7 +11,6 @@
 <%@ page import="com.company.dao.inter.EmpHistoryDaoInter" %>
 <%@ page import="com.company.dao.inter.SkillDaoInter" %>
 <%@ page import="com.company.dao.inter.CountryDaoInter" %>
-
 <%@ page import="com.company.entity.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -73,9 +72,9 @@
             <h3>Profile</h3>
             <form>
                 <div>
-                    <textarea name></textarea>
+                    <textarea class="form-control" name="profile" ><%=user.getProfileDescription()%></textarea>
 
-                    <input type="submit" value="Save">
+                    <input type="submit" value="Save" class="btn btn-primary">
                 </div>
             </form>
         </div>
@@ -84,32 +83,34 @@
             <div>
                 <h3>Detail</h3>
             </div>
+            <form class="form-group">
+            <div class="row">
             <ul>
                 <li>
                     <div>
                         <lablel for="address" >Address:</lablel>
-                        <input type="text" name="address">
+                        <input type="text" class="form-control" name="address" value="<%=user.getAddress()%>">
                     </div>
                 </li>
                 <li>
                     <div>
                         <lablel for="phone" >Phone:</lablel>
 
-                        <input type="text" name="phone">
+                        <input type="text" class="form-control" name="phone" value="<%=user.getPhone()%>">
                     </div>
                 </li>
                 <li>
                     <div>
                         <lablel for="email" >Email:</lablel>
 
-                        <input type="text" name="email">
+                        <input type="text" class="form-control" name="email" value="<%=user.getEmail()%>">
                     </div>
                 </li>
                 <li>
                     <div>
                         <lablel for="birthday" >Birthday:</lablel>
 
-                        <input type="text" name="birthday">
+                        <input type="text" class="form-control" name="birthday" value="<%=user.getBirthDate()%>">
                     </div>
                 </li>
 
@@ -117,16 +118,19 @@
                     <div>
                         <lablel for="nationality" >Nationality</lablel>
 
-                        <select name="nationality">
+                        <select class="form-control" name="nationality">
 
-                            <%
-                                for(Country country:countryList){
-                            %>
+                            <%  for(Country country:countryList){ %>
+                            <%        if(country.getId()==user.getBirthPlace().getId()){ %>
 
-                            <option value="<%=country.getId()%>"><%=country.getNatinality()%></option>
 
+                                <option selected value="<%=country.getId()%>"><%=country.getNatinality()%></option>
+
+                            <%  }else{ %>
+                                <option value="<%=country.getId()%>"><%=country.getNatinality()%></option>
                             <%
                                 }
+                            }
                             %>
 
                         </select>
@@ -136,15 +140,18 @@
                     <div>
                         <lablel for="country" >Country:</lablel>
 
-                        <select name="country">
+                        <select class="form-control" name="country">
 
+                            <% for(Country country:countryList){  %>
+                            <%        if(country.getId()==user.getNationality().getId()){ %>
+
+
+                            <option selected value="<%=country.getId()%>"><%=country.getNatinality()%></option>
+
+                            <%  }else{ %>
+                            <option value="<%=country.getId()%>"><%=country.getNatinality()%></option>
                             <%
-                                for(Country country:countryList){
-                            %>
-
-                            <option value="<%=country.getId()%>"><%=country.getName()%></option>
-
-                            <%
+                                    }
                                 }
                             %>
 
@@ -152,6 +159,8 @@
                     </div>
                 </li>
             </ul>
+            </div>
+            </form>
 
 
         </div>
