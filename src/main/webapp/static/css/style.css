@@ -3,7 +3,7 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
-/* 
+/*
     Created on : Feb 7, 2019, 7:10:54 PM
     Author     : TURAL
 */
@@ -44,3 +44,11 @@ and open the template in the editor.
   border-top: none;
 }
 
+
+ul {
+  list-style-type: none;
+  list-style: none; /* Remove list bullets */
+
+  margin: 0;
+  padding: 0;
+}
