@@ -110,15 +110,31 @@ public class UserController extends HttpServlet {
             throws ServletException, IOException {
 
         int id = Integer.valueOf(request.getParameter("id"));
-        String name = request.getParameter("name");
-        String surname = request.getParameter("surname");
 
         User us = userDao.getById(id);
-        us.setFirstname(name);
-        us.setLastname(surname);
-        userDao.updateUser(us);
 
-        response.sendRedirect("users.jsp");
+        // Check if desk parameter exists
+        if (request.getParameterMap().containsKey("name")) {
+            String name = request.getParameter("name");
+            us.setFirstname(name);
+        }
+        // Check if desk parameter exists
+        if (request.getParameterMap().containsKey("surname")) {
+            String surname = request.getParameter("surname");
+            us.setLastname(surname);
+        }
+
+        // Check if profile desk parameter exists
+        if (request.getParameterMap().containsKey("profile")) {
+            String profile = request.getParameter("profile");
+            us.setProfileDescription(profile);
+        }
+
+//        us.setFirstname(name);
+//        us.setLastname(surname);
+        userDao.updateUser(us);
+        System.out.println("here we are");
+        response.sendRedirect("userdetail?id="+us.getId());
 
     }
 

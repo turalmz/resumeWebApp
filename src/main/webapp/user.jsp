@@ -61,17 +61,17 @@
 
     <%--</form>--%>
 
-    <form action="UserController" method="post">
+    <form action="userdetail" method="post">
         <div class="form-group">
             <input type="hidden"  name="id" value="<%=user.getId()%>">
             <lablel for="name" >Name:</lablel>
 
-            <input type="text" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter name" value="<%=user.getFirstname()%>">
+            <input type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp" placeholder="Enter name" value="<%=user.getFirstname()%>">
             <small id="nameHelp" class="form-text text-muted">This is your public name.</small>
         </div>
         <div class="form-group">
             <lablel for="surname" >Surname:</lablel>
-            <input type="text" class="form-control" id="surname" placeholder="Enter surname">
+            <input type="text" class="form-control"  name="surname"  id="surname" placeholder="Enter surname" value="<%=user.getLastname()%>">
         </div>
 
         <button type="submit" class="btn btn-primary">Save</button>
@@ -92,7 +92,9 @@
         <!-- Tab content -->
         <div id="Profile" class="tabcontent">
             <h3>Profile</h3>
-            <form action="UserController" method="post">
+            <form action="userdetail" method="post">
+                <input type="hidden"  name="id" value="<%=user.getId()%>">
+
                 <div class="form-group">
                     <textarea class="form-control" name="profile" ><%=user.getProfileDescription()%></textarea>
 
@@ -104,7 +106,7 @@
             <div>
                 <h3>Detail</h3>
             </div>
-            <form >
+            <form action="userdetail" method="post" >
 
                     <div class="form-group">
                         <lablel for="address" >Address:</lablel>
@@ -179,7 +181,7 @@
         <div id="Skill" class="tabcontent">
             <h3>Skill</h3>
             <div >
-                <form>
+                <form action="userdetail" method="post">
                     <div class="form-group">
                         <lablel for="skill" >Skill</lablel>
 
@@ -200,7 +202,20 @@
                     <div class="form-group">
 
                         <lablel for="power" >Power:</lablel>
-                        <input type="text" class="form-control" name="power" value="">
+                        <%--<input type="text" class="form-control" name="power" value="">--%>
+                        <select class="form-control" name="power">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+
                     </div>
                     <div class="form-group">
                         <lablel for="name" ></lablel>
@@ -246,7 +261,7 @@
         <div id="Emp_History" class="tabcontent">
             <h3>Emp History</h3>
             <div >
-                <form>
+                <form action="userdetail" method="post">
                     <div class="form-group">
                         <lablel for="header" >Header:</lablel>
 
