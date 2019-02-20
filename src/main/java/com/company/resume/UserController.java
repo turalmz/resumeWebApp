@@ -110,32 +110,45 @@ public class UserController extends HttpServlet {
             throws ServletException, IOException {
 
         int id = Integer.valueOf(request.getParameter("id"));
+        String action="";
+        if (request.getParameterMap().containsKey("action")) {
+            action = request.getParameter("action");
+        }
+
+        System.out.println("action="+action);
 
         User us = userDao.getById(id);
 
-        // Check if desk parameter exists
-        if (request.getParameterMap().containsKey("name")) {
-            String name = request.getParameter("name");
-            us.setFirstname(name);
-        }
-        // Check if desk parameter exists
-        if (request.getParameterMap().containsKey("surname")) {
-            String surname = request.getParameter("surname");
-            us.setLastname(surname);
-        }
+        if(action.equalsIgnoreCase("update")) {
+            // Check if desk parameter exists
+            if (request.getParameterMap().containsKey("name")) {
+                String name = request.getParameter("name");
+                us.setFirstname(name);
+            }
+            // Check if desk parameter exists
+            if (request.getParameterMap().containsKey("surname")) {
+                String surname = request.getParameter("surname");
+                us.setLastname(surname);
+            }
 
-        // Check if profile desk parameter exists
-        if (request.getParameterMap().containsKey("profile")) {
-            String profile = request.getParameter("profile");
-            us.setProfileDescription(profile);
+            // Check if profile desk parameter exists
+            if (request.getParameterMap().containsKey("profile")) {
+                String profile = request.getParameter("profile");
+                us.setProfileDescription(profile);
+            }
+
+
+            userDao.updateUser(us);
+            System.out.println("here we are");
+
+            response.sendRedirect("userdetail?id=" + us.getId());
+
+        }else if(action.equalsIgnoreCase("delete")){
+
+            userDao.removeUser(us.getId());
+            response.sendRedirect("users");
+
         }
-
-//        us.setFirstname(name);
-//        us.setLastname(surname);
-        userDao.updateUser(us);
-        System.out.println("here we are");
-        response.sendRedirect("userdetail?id="+us.getId());
-
     }
 
     /**

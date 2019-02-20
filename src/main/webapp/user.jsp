@@ -36,45 +36,22 @@
 <body>
 <div class="container">
     <h1>User details</h1>
-    <%--<form action="UserController" method="post">--%>
-        <%--<div class="row">--%>
 
-            <%--<input type="hidden"  name="id" value="<%=user.getId()%>">--%>
-            <%--<div class="col-4">--%>
-
-                <%--<lablel for="name" >Name:</lablel>--%>
-                <%--<input type="text" class="form-control" name="name" value="<%=user.getFirstname()%>">--%>
-            <%--</div>--%>
-            <%--<div class="col-4">--%>
-
-                <%--<lablel for="surname" >Surname:</lablel>--%>
-                <%--<input type="text" class="form-control" name="surname" value="<%=user.getLastname()%>">--%>
-            <%--</div>--%>
-            <%--<div class="col-4">--%>
-                <%--<div ><lablel for="name" ><br></lablel></div>--%>
-                <%--<div>--%>
-                    <%--<input type="submit" value="Save" class="btn btn-primary">--%>
-                <%--</div>--%>
-            <%--</div>--%>
-        <%--</div>--%>
-
-
-    <%--</form>--%>
 
     <form action="userdetail" method="post">
         <div class="form-group">
             <input type="hidden"  name="id" value="<%=user.getId()%>">
-            <lablel for="name" >Name:</lablel>
+            <lablel for="name" >Name</lablel>
 
             <input type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp" placeholder="Enter name" value="<%=user.getFirstname()%>">
             <small id="nameHelp" class="form-text text-muted">This is your public name.</small>
         </div>
         <div class="form-group">
-            <lablel for="surname" >Surname:</lablel>
+            <lablel for="surname" >Surname</lablel>
             <input type="text" class="form-control"  name="surname"  id="surname" placeholder="Enter surname" value="<%=user.getLastname()%>">
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="button" class="btn btn-primary" onclick="openCity(event)">Save</button>
     </form>
 
 
@@ -180,8 +157,9 @@
 
         <div id="Skill" class="tabcontent">
             <h3>Skill</h3>
-            <div >
-                <form action="userdetail" method="post">
+            <div class="row">
+                <div class="col-md-6">
+                <form action="userskill" method="post">
                     <div class="form-group">
                         <lablel for="skill" >Skill</lablel>
 
@@ -223,7 +201,23 @@
                         <input type="submit" value="Save" class="btn btn-primary">
                     </div>
                 </form>
-            </div>
+                </div>
+                <div class="col-md-6">
+                    <%--<h3>Add new skill</h3>--%>
+
+                    <form action="skill" method="post">
+                        <div class="form-group">
+                            <lablel for="skill" >New Skill Name</lablel>
+                            <input type="text" class="form-control"  name="surname"  id="skillname" placeholder="Enter skill name" >
+                        </div>
+                        <div class="form-group">
+                            <lablel for="name" ></lablel>
+
+                            <input type="submit" value="Save" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+                </div>
             <div>
                 <table class="table" >
                     <thead>

@@ -78,15 +78,19 @@
             <td style="width: 1px">
                 <form action="userdetail" method="get">
                     <input type="hidden" name="id" value="<%= u.getId()%>"/>
+                    <input type="hidden" name="action" value="update"/>
 
-                    <button type="submit" name="action" class="btn-table btn-secondary" value="update">
+                    <button type="submit"  class="btn-table btn-secondary">
                         <i class="fas fa-edit"></i>
                     </button>
                 </form>
             </td>
             <td style="width: 1px">
-                <form action="userdetail" method="get" >
-                    <button type="submit" name="action"  class="btn-table btn-danger"  value="delete">
+                <form action="userdetail" method="post" >
+                    <input type="hidden" name="id" value="<%= u.getId()%>"/>
+                    <input type="hidden" name="action" value="delete"/>
+
+                    <button type="submit" class="btn-table btn-danger" >
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </form>

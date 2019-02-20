@@ -31,3 +31,8 @@ $( document ).ready(function() {
     $('#datetimepicker2').datetimepicker();
     $('#datetimepicker3').datetimepicker();
 });
+
+
+
+document.getElementById("checkyear").value = "1";
+alert(document.getElementById("checkyear").value);

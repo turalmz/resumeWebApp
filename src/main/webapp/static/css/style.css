@@ -28,12 +28,12 @@ and open the template in the editor.
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-  background-color: #ddd;
+  background-color: #E4E4E4;
 }
 
 /* Create an active/current tablink class */
 .tab button.active {
-  background-color: #ccc;
+  background-color: #E4E4E4;
 }
 
 /* Style the tab content */
@@ -53,13 +53,15 @@ ul {
   padding: 0;
 }
 
- ul {
-   list-style-type: none;
-   margin: 0;
-   padding: 0;
-   overflow: hidden;
-   /*background-color: #333;*/
- }
+
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #E4E4E4;
+}
 
 li {
   float: left;
@@ -67,12 +69,12 @@ li {
 
 li a {
   display: block;
-  color: white;
+  color: #E4E4E4;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: #E4E4E4;
 }
