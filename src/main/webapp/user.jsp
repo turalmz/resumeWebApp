@@ -163,10 +163,12 @@
             <div class="row">
                 <div class="col-md-6">
                 <form action="userskill" method="post">
-                    <div class="form-group">
-                        <lablel for="skill" >Skill</lablel>
+                    <input type="hidden"  name="id" value="<%=user.getId()%>">
 
-                        <select class="form-control" name="skill">
+                    <div class="form-group">
+                        <lablel for="skillId" >Skill</lablel>
+
+                        <select class="form-control" name="skillId">
 
                             <%  for(Skill skill:skillList){ %>
 
@@ -183,7 +185,6 @@
                     <div class="form-group">
 
                         <lablel for="power" >Power:</lablel>
-                        <%--<input type="text" class="form-control" name="power" value="">--%>
                         <select class="form-control" name="power">
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -209,9 +210,11 @@
                     <%--<h3>Add new skill</h3>--%>
 
                     <form action="skill" method="post">
+                        <input type="hidden"  name="userId" value="<%=user.getId()%>">
+
                         <div class="form-group">
                             <lablel for="skill" >New Skill Name</lablel>
-                            <input type="text" class="form-control"  name="surname"  id="skillname" placeholder="Enter skill name" >
+                            <input type="text" class="form-control"  name="skillName"  id="skillname" placeholder="Enter skill name" >
                         </div>
                         <div class="form-group">
                             <lablel for="name" ></lablel>
@@ -239,8 +242,13 @@
                         <td><%= us.getSkill().getName() %></td>
                         <td><%= us.getPower() %></td>
                         <td>
-                            <form action="userdetail" method="post" >
-                                <button type="submit" name="action"  class="btn-table btn-danger"  value="delete">
+                            <form action="userskill" method="post" >
+                                <input type="hidden" name="id" value="<%= user.getId()%>"/>
+                                <input type="hidden" name="skillId" value="<%= us.getId()%>"/>
+
+                                <input type="hidden" name="action" value="delete"/>
+
+                                <button type="submit" class="btn-table btn-danger" >
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>

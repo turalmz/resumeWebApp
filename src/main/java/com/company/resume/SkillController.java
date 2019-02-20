@@ -63,12 +63,12 @@ public class SkillController extends HttpServlet {
             SkillDaoInter skillDao = Context.instanceSkillDao();
             String userId = request.getParameter("userId");
 
-            String name = request.getParameter("name");
-            if(name==""){
+            String skillName = request.getParameter("skillName");
+            if(skillName==""){
                 throw new IllegalArgumentException("name is empty");
             }
 
-            Skill sk = new Skill(null,name);
+            Skill sk = new Skill(null,skillName);
 
             skillDao.insertSkill(sk);
             response.sendRedirect("userdetail?id="+userId);

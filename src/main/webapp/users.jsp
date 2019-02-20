@@ -40,7 +40,7 @@
 
 <div class="container">
     <h1>User Resume</h1>
-    <form action="userdetail" method="post">
+    <form action="users" method="post">
         <div class="form-group">
             <div class="form-group">
                 <lablel for="name" >Name:</lablel>
@@ -59,7 +59,7 @@
 
 
     <!-- Tab content -->
-    <div id="Profile" class="tabcontent">
+    <div>
         <table class="table" >
             <thead>
             <tr>
