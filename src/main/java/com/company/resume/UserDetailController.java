@@ -23,8 +23,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author TURAL
  */
-@WebServlet(name = "UserController" , urlPatterns = ("/userdetail"))
-public class UserController extends HttpServlet {
+@WebServlet(name = "UserDetailController" , urlPatterns = ("/userdetail"))
+public class UserDetailController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
