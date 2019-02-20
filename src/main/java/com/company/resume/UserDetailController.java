@@ -120,12 +120,12 @@ public class UserDetailController extends HttpServlet {
         User us = userDao.getById(id);
 
         if(action.equalsIgnoreCase("update")) {
-            // Check if desk parameter exists
+            // Check if name parameter exists
             if (request.getParameterMap().containsKey("name")) {
                 String name = request.getParameter("name");
                 us.setFirstname(name);
             }
-            // Check if desk parameter exists
+            // Check if surname parameter exists
             if (request.getParameterMap().containsKey("surname")) {
                 String surname = request.getParameter("surname");
                 us.setLastname(surname);

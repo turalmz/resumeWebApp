@@ -11,8 +11,8 @@ and open the template in the editor.
 /* Style the tab */
 .tab {
   overflow: hidden;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  border: 1px solid #E4E4E4;
+  background-color: #dadada;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -22,7 +22,7 @@ and open the template in the editor.
   border: none;
   outline: none;
   cursor: pointer;
-  color: #a9a9a9;
+  color: #696969;
   padding: 14px 16px;
   transition: 0.3s;
 }

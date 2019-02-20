@@ -27,9 +27,16 @@ function openCity(evt, cityName) {
 
 
 $( document ).ready(function() {
-    $('#datetimepicker1').datetimepicker();
-    $('#datetimepicker2').datetimepicker();
-    $('#datetimepicker3').datetimepicker();
+    $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY',
+    });
+
+    $('#datetimepicker2').datetimepicker({
+        format: 'DD/MM/YYYY',
+    });
+    $('#datetimepicker3').datetimepicker({
+        format: 'DD/MM/YYYY',
+    });
 });
 
 

@@ -266,7 +266,10 @@
         <div id="Emp_History" class="tabcontent">
             <h3>Emp History</h3>
             <div >
-                <form action="userdetail" method="post">
+                <form action="emphistory" method="post">
+                    <input type="hidden" name="id" value="<%= user.getId()%>"/>
+                    <input type="hidden" name="action" value="insert"/>
+
                     <div class="form-group">
                         <lablel for="header" >Header:</lablel>
 
@@ -280,7 +283,7 @@
                         <lablel for="begin_date" >Begin Date:</lablel>
                         <%--<input type="text" class="form-control" name="begin_date" value="">--%>
                         <div class="input-group date" id="datetimepicker2">
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control" name="beginDate" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -291,7 +294,7 @@
                         <lablel for="end_date" >End Date:</lablel>
                         <%--<input type="text" class="form-control" name="end_date" value="">--%>
                         <div class="input-group date" id="datetimepicker3">
-                            <input type="text" class="form-control" />
+                            <input type="text" class="form-control"  name="endDate" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -325,8 +328,11 @@
                         <td><%= us.getEndDate() %></td>
                         <td><%= us.getJobDescription() %></td>
                         <td >
-                            <form action="userdetail" method="post" >
-                                <button type="submit" name="action"  class="btn-table btn-danger"  value="delete">
+                            <form action="emphistory" method="post" >
+                                <input type="hidden" name="id" value="<%= user.getId()%>"/>
+                                <input type="hidden" name="empHistoryId" value="<%= us.getId()%>"/>
+                                <input type="hidden" name="action" value="delete"/>
+                                <button type="submit" class="btn-table btn-danger" >
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
