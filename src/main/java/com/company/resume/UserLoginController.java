@@ -28,11 +28,8 @@ public class UserLoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        User user=null;
 
         try{
-
-
 
             request.getRequestDispatcher("login.jsp").forward(request,response);
         }catch (Exception ex){
