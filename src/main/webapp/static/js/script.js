@@ -39,7 +39,11 @@ $( document ).ready(function() {
     });
 });
 
+function clickme(i){
+    $("#deleteId").val(i);
+    $("#exampleModal").modal();
 
+}
 
-document.getElementById("checkyear").value = "1";
-alert(document.getElementById("checkyear").value);
+// document.getElementById("checkyear").value = "1";
+// alert(document.getElementById("checkyear").value);
