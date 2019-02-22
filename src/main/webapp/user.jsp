@@ -28,11 +28,14 @@
 </head>
 <%
     User user = (User)request.getAttribute("user");
-    List<UserSkill> userSkillList = (List<UserSkill>)request.getAttribute("userSkillList");
-    List<EmpHistory> empHistoryList = (List<EmpHistory>)request.getAttribute("empHistoryList");
+    List<UserSkill> userSkillList = null;
+    List<EmpHistory> empHistoryList = null;
+    if(user!=null){
+        userSkillList = (List<UserSkill>)request.getAttribute("userSkillList");
+        empHistoryList = (List<EmpHistory>)request.getAttribute("empHistoryList");
+    }
     List<Skill> skillList = (List<Skill>)request.getAttribute("skillList");
     List<Country> countryList = (List<Country>)request.getAttribute("countryList");
-
 %>
 <body>
 <jsp:include page="menu.jsp" />
@@ -62,8 +65,10 @@
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'Profile')">Profile</button>
             <button class="tablinks" onclick="openCity(event, 'Detail')">Detail</button>
+            <%  if(user!=null){ %>
             <button class="tablinks" onclick="openCity(event, 'Skill')">Skill</button>
             <button class="tablinks" onclick="openCity(event, 'Emp_History')">Emp History</button>
+            <%  }%>
         </div>
 
         <!-- Tab content -->
@@ -115,9 +120,7 @@
 
                             <%  for(Country country:countryList){ %>
                             <%        if(country.getId()==user.getBirthPlace().getId()){ %>
-
                                 <option selected value="<%=country.getId()%>"><%=country.getName()%></option>
-
                             <%  }else{ %>
                                 <option value="<%=country.getId()%>"><%=country.getName()%></option>
                             <%
@@ -342,7 +345,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Selected</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Update User</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -354,16 +357,15 @@
 
                 <input type="hidden"  name="id" value="<%=user.getId()%>">
 
-                <input type="hidden"  name="name" id="nameMain" value="<%=user.getFirstname()%>">
-                <input type="hidden"  name="surname" id="surnameMain" value="<%=user.getLastname()%>">
-                <input type="hidden"  name="profile" id="profileDetMain" value="<%=user.getProfileDescription()%>">
-                <input type="hidden"  name="address" id="addressMain" value="<%=user.getAddress()%>">
-                <input type="hidden"  name="phone" id="phoneMain" value="<%=user.getPhone()%>">
-                <input type="hidden"  name="email" id="emailMain" value="<%=user.getEmail()%>">
-                <input type="hidden"  name="birthday" id="birthdayMain" value="<%=user.getBirthDate()%>">
-                <input type="hidden"  name="country"  id="countryMain" value="<%=user.getBirthPlace().getId()%>">
-                <input type="hidden"  name="nationality" id="nationalityMain" value="<%=user.getNationality().getId()%>">
-
+                <input type="hidden"  name="name" id="nameMain" value="">
+                <input type="hidden"  name="surname" id="surnameMain" value="">
+                <input type="hidden"  name="profile" id="profileDetMain" value="">
+                <input type="hidden"  name="address" id="addressMain" value="">
+                <input type="hidden"  name="phone" id="phoneMain" value="">
+                <input type="hidden"  name="email" id="emailMain" value="">
+                <input type="hidden"  name="birthday" id="birthdayMain" value="">
+                <input type="hidden"  name="country"  id="countryMain" value="">
+                <input type="hidden"  name="nationality" id="nationalityMain" value="">
 
                 <input type="hidden" name="action" value="update"/>
 
