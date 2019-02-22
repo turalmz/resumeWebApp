@@ -152,22 +152,12 @@
 </body>
 <script>
 
-    // $("#exampleModal").modal();
-
     $(document).ready(function(){
-        // $(".alma").click(function(){
-        //$("#exampleModal").modal();
-        //
-        // });
 
         function clickme(i){
             $("#deleteId").val(i);
-
         }
-
     });
-
-
 
 </script>
 </html>

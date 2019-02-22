@@ -119,24 +119,51 @@ public class UserDetailController extends HttpServlet {
 
         User us = userDao.getById(id);
 
+
+        /*
+                name="name"  user.getFirstname()
+                name="surname" user.getLastname()
+                name="profile" user.getProfileDescription()
+                name="address" user.getAddress()
+                name="phone" user.getPhone()
+                name="email" user.getEmail()
+                name="birthday" user.getBirthDate()
+                name="country"  user.getBirthPlace().getId()
+                name="nationality" user.getNationality().getId()
+
+         */
+
+
         if(action.equalsIgnoreCase("update")) {
-            // Check if name parameter exists
-            if (request.getParameterMap().containsKey("name")) {
-                String name = request.getParameter("name");
-                us.setFirstname(name);
-            }
-            // Check if surname parameter exists
-            if (request.getParameterMap().containsKey("surname")) {
-                String surname = request.getParameter("surname");
-                us.setLastname(surname);
-            }
+            // get if name parameter exists
+            String name = request.getParameter("name");
+            us.setFirstname(name);
 
-            // Check if profile desk parameter exists
-            if (request.getParameterMap().containsKey("profile")) {
-                String profile = request.getParameter("profile");
-                us.setProfileDescription(profile);
-            }
+            // get if surname parameter exists
+            String surname = request.getParameter("surname");
+            us.setLastname(surname);
 
+            // get if profile  parameter exists
+            String profile = request.getParameter("profile");
+            us.setProfileDescription(profile);
+
+            // get if address parameter exists
+            String address = request.getParameter("address");
+            us.setAddress(address);
+
+            // get if phone parameter exists
+            String phone = request.getParameter("phone");
+            us.setPhone(phone);
+
+            // get if email parameter
+            String email = request.getParameter("email");
+            us.setEmail(email);
+
+            int countryId = Integer.valueOf(request.getParameter("country"));
+            us.setBirthPlace(new Country(countryId));
+
+            int nationalityId = Integer.valueOf(request.getParameter("nationality"));
+            us.setNationality(new Country(nationalityId));
 
             userDao.updateUser(us);
             System.out.println("here we are");

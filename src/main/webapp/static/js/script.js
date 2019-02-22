@@ -26,24 +26,27 @@ function openCity(evt, cityName) {
 }
 
 
-$( document ).ready(function() {
-    $('#datetimepicker1').datetimepicker({
-        format: 'DD/MM/YYYY',
-    });
+function updateUser(){
+    console.log("update button pressed");
+    $("#nameMain").val($("#name").val());
+    $("#surnameMain").val($("#surname").val());
+    $("#addressMain").val($("#address").val());
+    $("#birthdayMain").val($("#birthday").val());
+    $("#countryMain").val($("#country").val());
+    $("#nationalityMain").val($("#nationality").val());
+    $("#emailMain").val($("#email").val());
+    $("#profileDetMain").val($("#profileDet").val());
+    $("#phoneMain").val($("#phone").val());
 
-    $('#datetimepicker2').datetimepicker({
-        format: 'DD/MM/YYYY',
-    });
-    $('#datetimepicker3').datetimepicker({
-        format: 'DD/MM/YYYY',
-    });
-});
+
+
+
+    $("#exampleModal").modal();
+}
+
 
 function clickme(i){
     $("#deleteId").val(i);
     $("#exampleModal").modal();
-
 }
 
-// document.getElementById("checkyear").value = "1";
-// alert(document.getElementById("checkyear").value);
