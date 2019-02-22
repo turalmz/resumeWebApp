@@ -21,8 +21,8 @@ import java.util.List;
  *
  * @author TURAL
  */
-@WebServlet(name = "UserLoginController" , urlPatterns = ("/login"))
-public class UserLoginController extends HttpServlet {
+@WebServlet(name = "LoginController" , urlPatterns = ("/login"))
+public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -67,6 +67,9 @@ public class UserLoginController extends HttpServlet {
         User us = userDao.getById(lg.getUser().getId());
 
         System.out.println("here we are");
+
+        request.getSession().setAttribute("user",us);
+        request.getSession().setMaxInactiveInterval(60*60);
 
         response.sendRedirect("users?name=" + us.getFirstname()+"&surname="+us.getLastname());
 

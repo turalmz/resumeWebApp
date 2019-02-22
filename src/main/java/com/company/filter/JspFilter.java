@@ -1,4 +1,4 @@
-package com.company.resume;
+package com.company.filter;
 
 import java.io.*;
 import javax.servlet.*;
