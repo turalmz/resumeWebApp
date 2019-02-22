@@ -38,7 +38,6 @@ public class UserDetailController extends HttpServlet {
         if (!request.getParameterMap().containsKey("id")) {
             request.setAttribute("user",user);
 
-
             CountryDaoInter countryDao = Context.instanceCountryDao();
             List<Country> countryList = countryDao.getAll();
             request.setAttribute("countryList",countryList);
@@ -80,9 +79,13 @@ public class UserDetailController extends HttpServlet {
             List<Skill> skillList = skillDao.getAll();
             request.setAttribute("skillList",skillList);
 
+            CountryDaoInter countryDao = Context.instanceCountryDao();
+            List<Country> countryList = countryDao.getAll();
+            request.setAttribute("countryList",countryList);
 
             request.getRequestDispatcher("user.jsp").forward(request,response);
-        }catch (Exception ex){
+        }
+        catch (Exception ex){
             response.sendRedirect("error?msg="+ex.getMessage());
             return;
         }
@@ -101,20 +104,6 @@ public class UserDetailController extends HttpServlet {
         System.out.println("action="+action);
 
 
-
-
-        /*
-                name="name"  user.getFirstname()
-                name="surname" user.getLastname()
-                name="profile" user.getProfileDescription()
-                name="address" user.getAddress()
-                name="phone" user.getPhone()
-                name="email" user.getEmail()
-                name="birthday" user.getBirthDate()
-                name="country"  user.getBirthPlace().getId()
-                name="nationality" user.getNationality().getId()
-
-         */
 
 
         if(action.equalsIgnoreCase("update")) {
@@ -204,6 +193,7 @@ public class UserDetailController extends HttpServlet {
 
             
             System.out.println("here we are");
+            System.out.println("userdetail?id=" + us.getId());
 
             response.sendRedirect("userdetail?id=" + us.getId());
 

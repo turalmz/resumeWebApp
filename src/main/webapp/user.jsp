@@ -28,12 +28,8 @@
 </head>
 <%
     User user = (User)request.getAttribute("user");
-    List<UserSkill> userSkillList = null;
-    List<EmpHistory> empHistoryList = null;
-    if(user!=null){
-        userSkillList = (List<UserSkill>)request.getAttribute("userSkillList");
-        empHistoryList = (List<EmpHistory>)request.getAttribute("empHistoryList");
-    }
+    List<UserSkill> userSkillList  = (List<UserSkill>)request.getAttribute("userSkillList");
+    List<EmpHistory>  empHistoryList = (List<EmpHistory>)request.getAttribute("empHistoryList");
     List<Skill> skillList = (List<Skill>)request.getAttribute("skillList");
     List<Country> countryList = (List<Country>)request.getAttribute("countryList");
 %>
@@ -46,7 +42,7 @@
 
     <form action="userdetail" method="post">
         <div class="form-group">
-           <lablel for="name" >Name</lablel>
+            <lablel for="name" >Name</lablel>
             <input type="text" class="form-control" name="name" id="name" aria-describedby="nameHelp" placeholder="Enter name" value="<%=user.getFirstname()%>">
             <small id="nameHelp" class="form-text text-muted">This is your public name.</small>
         </div>
@@ -65,10 +61,8 @@
         <div class="tab">
             <button class="tablinks" onclick="openCity(event, 'Profile')">Profile</button>
             <button class="tablinks" onclick="openCity(event, 'Detail')">Detail</button>
-            <%  if(user!=null){ %>
             <button class="tablinks" onclick="openCity(event, 'Skill')">Skill</button>
             <button class="tablinks" onclick="openCity(event, 'Emp_History')">Emp History</button>
-            <%  }%>
         </div>
 
         <!-- Tab content -->
@@ -89,67 +83,67 @@
             </div>
             <form action="userdetail" method="post" >
 
-                    <div class="form-group">
-                        <lablel for="address" >Address:</lablel>
-                        <input type="text" class="form-control" id="address" name="address" value="<%=user.getAddress()%>">
-                    </div>
+                <div class="form-group">
+                    <lablel for="address" >Address:</lablel>
+                    <input type="text" class="form-control" id="address" name="address" value="<%=user.getAddress()%>">
+                </div>
 
-                    <div class="form-group">
-                        <lablel for="phone" >Phone:</lablel>
+                <div class="form-group">
+                    <lablel for="phone" >Phone:</lablel>
 
-                        <input type="text" class="form-control" id="phone" name="phone" value="<%=user.getPhone()%>">
-                    </div>
-                    <div class="form-group">
-                        <lablel for="email" >Email:</lablel>
+                    <input type="text" class="form-control" id="phone" name="phone" value="<%=user.getPhone()%>">
+                </div>
+                <div class="form-group">
+                    <lablel for="email" >Email:</lablel>
 
-                        <input type="text" class="form-control" id="email" name="email" value="<%=user.getEmail()%>">
-                    </div>
-                    <div class="form-group">
-                        <lablel for="birthday" >Birthday:</lablel>
-                        <div class="input-group date" id="datetimepicker1">
-                            <input type="text" class="form-control" id="birthday" name="birthday" value="<%=user.getBirthDate()%>" />
-                            <span class="input-group-addon">
+                    <input type="text" class="form-control" id="email" name="email" value="<%=user.getEmail()%>">
+                </div>
+                <div class="form-group">
+                    <lablel for="birthday" >Birthday:</lablel>
+                    <div class="input-group date" id="datetimepicker1">
+                        <input type="text" class="form-control" id="birthday" name="birthday" value="<%=user.getBirthDate()%>" />
+                        <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
-                        </div>
                     </div>
-                    <div class="form-group">
-                        <lablel for="nationality" >Country:</lablel>
+                </div>
+                <div class="form-group">
+                    <lablel for="nationality" >Country:</lablel>
 
-                        <select class="form-control"  name="country" id="country" >
+                    <select class="form-control"  name="country" id="country" >
 
-                            <%  for(Country country:countryList){ %>
-                            <%        if(country.getId()==user.getBirthPlace().getId()){ %>
-                                <option selected value="<%=country.getId()%>"><%=country.getName()%></option>
-                            <%  }else{ %>
-                                <option value="<%=country.getId()%>"><%=country.getName()%></option>
-                            <%
+                        <%  for(Country country:countryList){ %>
+                        <%        if(country.getId()==user.getBirthPlace().getId()){ %>
+                        <option selected value="<%=country.getId()%>"><%=country.getName()%></option>
+                        <%  }else{ %>
+                        <option value="<%=country.getId()%>"><%=country.getName()%></option>
+                        <%
                                 }
                             }
-                            %>
+                        %>
 
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <lablel for="country" >Nationality:</lablel>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <lablel for="country" >Nationality:</lablel>
 
-                        <select class="form-control" name="nationality" id="nationality" >
+                    <select class="form-control" name="nationality" id="nationality" >
 
-                            <% for(Country country:countryList){  %>
-                            <%        if(country.getId()==user.getNationality().getId()){ %>
+                        <% for(Country country:countryList){  %>
+                        <%        if(country.getId()==user.getNationality().getId()){ %>
 
 
-                            <option selected value="<%=country.getId()%>"><%=country.getNatinality()%></option>
+                        <option selected value="<%=country.getId()%>"><%=country.getNatinality()%></option>
 
-                            <%  }else{ %>
-                            <option value="<%=country.getId()%>"><%=country.getNatinality()%></option>
-                            <%
-                                    }
+                        <%  }else{ %>
+                        <option value="<%=country.getId()%>"><%=country.getNatinality()%></option>
+                        <%
                                 }
-                            %>
+                            }
+                        %>
 
-                        </select>
-                    </div>
+                    </select>
+                </div>
             </form>
 
 
@@ -159,44 +153,44 @@
             <h3>Skill</h3>
             <div class="row">
                 <div class="col-md-6">
-                <form action="userskill" method="post">
-                    <input type="hidden"  name="id" value="<%=user.getId()%>">
-                    <input type="hidden" name="action" value="update"/>
+                    <form action="userskill" method="post">
+                        <input type="hidden"  name="id" value="<%=user.getId()%>">
+                        <input type="hidden" name="action" value="update"/>
 
-                    <div class="form-group">
-                        <lablel for="skillId" >Skill</lablel>
-                        <select class="form-control" name="skillId">
-                            <%  for(Skill skill:skillList){ %>
+                        <div class="form-group">
+                            <lablel for="skillId" >Skill</lablel>
+                            <select class="form-control" name="skillId">
+                                <%  for(Skill skill:skillList){ %>
 
                                 <option  value="<%=skill.getId()%>"><%=skill.getName()%></option>
 
-                            <% }%>
-                        </select>
-                    </div>
+                                <% }%>
+                            </select>
+                        </div>
 
-                    <div class="form-group">
+                        <div class="form-group">
 
-                        <lablel for="power" >Power:</lablel>
-                        <select class="form-control" name="power">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
+                            <lablel for="power" >Power:</lablel>
+                            <select class="form-control" name="power">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
 
-                    </div>
-                    <div class="form-group">
-                        <lablel for="name" ></lablel>
+                        </div>
+                        <div class="form-group">
+                            <lablel for="name" ></lablel>
 
-                        <input type="submit" value="Save" class="btn btn-primary">
-                    </div>
-                </form>
+                            <input type="submit" value="Save" class="btn btn-primary">
+                        </div>
+                    </form>
                 </div>
                 <div class="col-md-6">
                     <%--<h3>Add new skill</h3>--%>
@@ -215,7 +209,7 @@
                         </div>
                     </form>
                 </div>
-                </div>
+            </div>
             <div>
                 <table class="table" >
                     <thead>
