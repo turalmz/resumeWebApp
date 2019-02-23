@@ -43,7 +43,6 @@ public class EmHistoryController extends HttpServlet {
 
         Integer id = null;
 
-        System.out.println("burdayam");
         if (request.getParameterMap().containsKey("id")) {
             id = Integer.valueOf(request.getParameter("id"));
         }
