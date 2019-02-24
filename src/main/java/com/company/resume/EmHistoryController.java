@@ -8,7 +8,7 @@ package com.company.resume;
 import com.company.Context;
 import com.company.dao.inter.*;
 import com.company.entity.*;
-import com.company.util.Converter;
+import com.company.resume.util.Converter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
-import java.util.List;
 
 /**
  *

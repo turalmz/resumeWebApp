@@ -1,4 +1,4 @@
-package com.company.util;
+package com.company.resume.util;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;

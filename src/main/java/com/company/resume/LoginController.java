@@ -5,9 +5,11 @@
  */
 package com.company.resume;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.company.Context;
 import com.company.dao.inter.*;
 import com.company.entity.*;
+import com.company.resume.util.ControllerUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,35 +45,29 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-
-        String username = "";
-        // Check if skill id parameter exists
-        if (request.getParameterMap().containsKey("username")) {
-            username = (request.getParameter("username"));
-
-        }
-        String password = "";
-
-        // Check if skill id parameter exists
-        if (request.getParameterMap().containsKey("password")) {
-            password = (request.getParameter("password"));
-
-        }
-
-        LoginDaoInter loginDao = Context.instanceLoginDao();
-
-        Login lg = loginDao.getByUserameAndPassword(username,password);
+        BCrypt.Verifyer verifyer = BCrypt.verifyer();
 
         UserDaoInter userDao = Context.instanceUserDao();
-        User us = userDao.getById(lg.getUser().getId());
+        try {
+            String email = request.getParameter("email");
+            String password = request.getParameter("password");
+            User user = userDao.findByEmail(email);
 
-        System.out.println("here we are");
+            if (user == null) {
+                throw new IllegalArgumentException("User doesn't existt!!!");
+            }
 
-        request.getSession().setAttribute("user",us);
-        request.getSession().setMaxInactiveInterval(60*60);
+            BCrypt.Result rs = verifyer.verify(password.toCharArray(), user.getPassword().toCharArray());
 
-        response.sendRedirect("users?name=" + us.getFirstname()+"&surname="+us.getLastname());
+            if(!rs.verified){
+                throw new IllegalArgumentException("password is incorrect!!!");
+            }
+
+            request.getSession().setAttribute("loggedInUser", user);
+            response.sendRedirect("users");
+        }catch (Exception ex){
+            ControllerUtil.errorPage(response, ex);
+        }
 
     }
 
