@@ -37,6 +37,7 @@ function updateUser(){
     $("#emailMain").val($("#email").val());
     $("#profileDetMain").val($("#profileDet").val());
     $("#phoneMain").val($("#phone").val());
+    $("#passwordMain").val($("#password").val());
 
 
 

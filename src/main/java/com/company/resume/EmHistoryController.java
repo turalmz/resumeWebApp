@@ -8,7 +8,7 @@ package com.company.resume;
 import com.company.Context;
 import com.company.dao.inter.*;
 import com.company.entity.*;
-import com.company.resume.util.Converter;
+import com.company.resume.util.ConverterUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -82,7 +82,7 @@ public class EmHistoryController extends HttpServlet {
 
             if (request.getParameterMap().containsKey("beginDate")) {
                 beginDate = request.getParameter("beginDate");
-                bDate = Converter.convertToDate(beginDate,"dd/MM/yyyy");
+                bDate = ConverterUtil.convertToDate(beginDate,"dd/MM/yyyy");
                 eh.setBeginDate(bDate);
 
             }
@@ -91,7 +91,7 @@ public class EmHistoryController extends HttpServlet {
             Date eDate = new Date(0);
             if (request.getParameterMap().containsKey("endDate")) {
                 endDate = request.getParameter("endDate");
-                eDate = Converter.convertToDate(endDate,"dd/MM/yyyy");
+                eDate = ConverterUtil.convertToDate(endDate,"dd/MM/yyyy");
                 eh.setEndDate(eDate);
             }
             empHistoryDao.updateEmpHistory(eh);
@@ -126,7 +126,7 @@ public class EmHistoryController extends HttpServlet {
             Date bDate = new Date(0);
             if (request.getParameterMap().containsKey("beginDate")) {
                 beginDate = request.getParameter("beginDate");
-                bDate = Converter.convertToDate(beginDate,"dd/MM/yyyy");
+                bDate = ConverterUtil.convertToDate(beginDate,"dd/MM/yyyy");
 
             }
 
@@ -135,7 +135,7 @@ public class EmHistoryController extends HttpServlet {
             Date eDate = new Date(0);
             if (request.getParameterMap().containsKey("endDate")) {
                 endDate = request.getParameter("endDate");
-                eDate = Converter.convertToDate(endDate,"dd/MM/yyyy");
+                eDate = ConverterUtil.convertToDate(endDate,"dd/MM/yyyy");
             }
 
             EmpHistory eh = new EmpHistory(null,userDao.getById(id),header,bDate,eDate,description);

@@ -7,10 +7,10 @@ package com.company.resume;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.company.Context;
-import com.company.dao.inter.*;
-import com.company.entity.*;
-import com.company.resume.util.ControllerUtil;
 
+import com.company.dao.inter.UserDaoInter;
+import com.company.entity.User;
+import com.company.resume.util.ControllerUtil;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

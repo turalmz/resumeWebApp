@@ -5,6 +5,7 @@
  */
 package com.company.resume;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.company.Context;
 import com.company.dao.impl.UserDaoImpl;
 import com.company.dao.inter.*;
@@ -131,6 +132,14 @@ public class UserDetailController extends HttpServlet {
             String phone = request.getParameter("phone");
             us.setPhone(phone);
 
+            // get if profile  parameter exists
+            String password = request.getParameter("password");
+
+            String bcryptHashString = BCrypt.withDefaults().hashToString(4, password.toCharArray());
+
+            us.setPassword(bcryptHashString);
+
+
             // get if email parameter
             String email = request.getParameter("email");
             us.setEmail(email);
@@ -157,7 +166,7 @@ public class UserDetailController extends HttpServlet {
         }else if(action.equalsIgnoreCase("add")) {
             User us = null;
 
-            us = new User(0,"","","","","",",",null,null,null);
+            us = new User(0);
 
             // get if name parameter exists
             String name = request.getParameter("name");
@@ -170,6 +179,13 @@ public class UserDetailController extends HttpServlet {
             // get if profile  parameter exists
             String profile = request.getParameter("profile");
             us.setProfileDescription(profile);
+
+            // get if profile  parameter exists
+            String password = request.getParameter("password");
+
+            String bcryptHashString = BCrypt.withDefaults().hashToString(4, password.toCharArray());
+
+            us.setPassword(bcryptHashString);
 
             // get if address parameter exists
             String address = request.getParameter("address");

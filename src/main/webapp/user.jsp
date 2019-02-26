@@ -93,6 +93,13 @@
 
                     <input type="text" class="form-control" id="phone" name="phone" value="<%=user.getPhone()%>">
                 </div>
+
+                <div class="form-group">
+                    <lablel for="password" >Password:</lablel>
+
+                    <input type="text" class="form-control" id="password" name="password" value="<%=user.getPassword()%>">
+                </div>
+
                 <div class="form-group">
                     <lablel for="email" >Email:</lablel>
 
@@ -356,6 +363,8 @@
                 <input type="hidden"  name="profile" id="profileDetMain" value="">
                 <input type="hidden"  name="address" id="addressMain" value="">
                 <input type="hidden"  name="phone" id="phoneMain" value="">
+                <input type="text"  name="password" id="passwordMain" value="">
+
                 <input type="hidden"  name="email" id="emailMain" value="">
                 <input type="hidden"  name="birthday" id="birthdayMain" value="">
                 <input type="hidden"  name="country"  id="countryMain" value="">

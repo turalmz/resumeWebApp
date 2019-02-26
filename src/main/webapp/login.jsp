@@ -40,7 +40,7 @@
         <div class="form-group">
             <lablel for="username" >Username</lablel>
 
-            <input type="text" class="form-control" name="username" id="username" aria-describedby="nameHelp" placeholder="Enter username" >
+            <input type="text" class="form-control" name="email" id="email" aria-describedby="nameHelp" placeholder="Enter username" >
             <small id="nameHelp" class="form-text text-muted">This is your public name.</small>
         </div>
         <div class="form-group">

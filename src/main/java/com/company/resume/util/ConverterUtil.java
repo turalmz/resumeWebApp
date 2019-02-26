@@ -3,7 +3,7 @@ package com.company.resume.util;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 
-public class Converter {
+public class ConverterUtil {
     public static Date convertToDate(String dateStr,String format){
 
         SimpleDateFormat sdf = new SimpleDateFormat(format);

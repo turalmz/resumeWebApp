@@ -6,9 +6,7 @@
 package com.company.resume;
 
 import com.company.Context;
-import com.company.dao.inter.LoginDaoInter;
 import com.company.dao.inter.UserDaoInter;
-import com.company.entity.Login;
 import com.company.entity.User;
 
 import javax.servlet.ServletException;
@@ -30,9 +28,8 @@ public class LogoutController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        HttpSession session=request.getSession();
-        session.invalidate();
 
+        request.getSession().invalidate();
         try{
             response.sendRedirect("login");
         }catch (Exception ex){
